@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Invenio Demosite.
-# Copyright (C) 2013 CERN.
+# Copyright (C) 2013, 2015 CERN.
 #
 # Invenio Demosite is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -17,116 +17,163 @@
 # along with Invenio; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 
+"""Collection fixtures."""
+
 import datetime
+
 from fixture import DataSet
 
 
 class SbmCOLLECTIONData(DataSet):
 
-    class SbmCOLLECTION_36:
-        id = 36L
+    """SbmCOLLECTIONData."""
+
+    class SbmCOLLECTION_1:
+        id = 1L
         name = u'Document Types'
 
 
 class SbmCOLLECTIONSbmCOLLECTIONData(DataSet):
 
+    """SbmCOLLECTIONSbmCOLLECTIONData."""
+
     class SbmCOLLECTIONSbmCOLLECTION_0_36:
-        id_son = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        son = SbmCOLLECTIONData.SbmCOLLECTION_1
         catalogue_order = 1L
         id_father = None
 
 
 class SbmDOCTYPEData(DataSet):
 
+    """SbmDOCTYPEData."""
+
     class SbmDOCTYPE_DEMOART:
         md = datetime.date(2008, 3, 6)
         ldocname = u'Demo Article Submission'
-        description = u'<br /><br />The Demo Article submission demonstrates a more complex submission type.<br /><br />\r\nThe submission gives a document a category. This category is used in the document\'s reference number and also serves as a means to classify it into a specific ATLANTIS collection. Documents submitted into the "Article" category are inserted into the ATLANTIS "Articles" collection, documents categorized as "Preprint" are inserted into the ATLANTIS "Preprints" collection, and a document categorized as a "Report" is inserted into the ATLANTIS "Reports" collection.<br /><br />\r\n'
+        description = u'<br /><br />The Demo Article submission demonstrates ' + \
+            'a more complex submission type.<br /><br />\r\nThe submission ' + \
+            'gives a document a category. This category is used in the ' + \
+            'document\'s reference number and also serves as a means to ' + \
+            'classify it into a specific ATLANTIS collection. Documents ' + \
+            'submitted into the "Article" category are inserted into the ' + \
+            'ATLANTIS "Articles" collection, documents categorized as ' + \
+            '"Preprint" are inserted into the ATLANTIS "Preprints" ' + \
+            'collection, and a document categorized as a "Report" is ' + \
+            'inserted into the ATLANTIS "Reports" collection.<br /><br />\r\n'
         sdocname = u'DEMOART'
         cd = datetime.date(2008, 3, 6)
 
     class SbmDOCTYPE_DEMOBOO:
         md = datetime.date(2008, 3, 6)
         ldocname = u'Demo Book Submission (Refereed)'
-        description = u'<br /><br />The Demo Book submission demonstrates a refereed submission.<br /><br />\r\nWhen the details of a book are submitted by a user, they must be approved by a referee before the record is integrated into the ATLANTIS repository.<br />\r\nApproved books are integrated into the ATLANTIS "Books" collection.<br />\r\n'
+        description = u'<br /><br />The Demo Book submission demonstrates ' + \
+            'a refereed submission.<br /><br />\r\nWhen the details of a ' + \
+            'book are submitted by a user, they must be approved by a ' + \
+            'referee before the record is integrated into the ATLANTIS ' + \
+            'repository.<br />\r\nApproved books are integrated into the ' + \
+            'ATLANTIS "Books" collection.<br />\r\n'
         sdocname = u'DEMOBOO'
         cd = datetime.date(2008, 3, 6)
 
     class SbmDOCTYPE_DEMOJRN:
         md = datetime.date(2008, 9, 18)
         ldocname = u'Demo Journal Submission'
-        description = u'The Demo Journal submission submits records that will be integrated into the demo "Atlantis Times" journal.<br />\r\n Makes use of CKEditor to provide WYSIWYG HTML edition of the articles. Install it with <code>make install-ckeditor-plugin</code>.'
+        description = u'The Demo Journal submission submits records that ' + \
+            'will be integrated into the demo "Atlantis Times" journal.' + \
+            '<br />\r\n Makes use of CKEditor to provide WYSIWYG HTML ' + \
+            'edition of the articles. Install it with ' + \
+            '<code>make install-ckeditor-plugin</code>.'
         sdocname = u'DEMOJRN'
         cd = datetime.date(2008, 9, 18)
 
     class SbmDOCTYPE_DEMOPIC:
         md = datetime.date(2007, 10, 17)
         ldocname = u'Demo Picture Submission'
-        description = u'<br /><br />\r\nThe Demo Picture submission demonstrates a slightly more detailed submission type.<br />\r\nIt makes use of different categories (which in this case are used in the picture\'s reference number to better describe it) and creates icons for the submitted picture files. Records created with this submission are inserted into the ATLANTIS "Pictures" collection.\r\n<br /><br />\r\n'
+        description = u'<br /><br />\r\nThe Demo Picture submission ' + \
+            'demonstrates a slightly more detailed submission type.' + \
+            '<br />\r\nIt makes use of different categories (which in ' + \
+            'this case are used in the picture\'s reference number to ' + \
+            'better describe it) and creates icons for the submitted ' + \
+            'picture files. Records created with this submission are ' + \
+            'inserted into the ATLANTIS "Pictures" collection.\r\n' + \
+            '<br /><br />\r\n'
         sdocname = u'DEMOPIC'
         cd = datetime.date(2007, 9, 13)
 
     class SbmDOCTYPE_DEMOPOE:
         md = datetime.date(2008, 3, 12)
         ldocname = u'Demo Poetry Submission'
-        description = u'<br /><br />\r\nThe Demo Poetry submission demonstrates a simple submission type with a submission form split over two pages.<br />\r\nIt does not use categories. Records created with this submission are inserted into the ATLANTIS "Poetry" collection.\r\n<br /><br />'
+        description = u'<br /><br />\r\nThe Demo Poetry submission ' + \
+            'demonstrates a simple submission type with a submission ' + \
+            'form split over two pages.<br />\r\nIt does not use ' + \
+            'categories. Records created with this submission are ' + \
+            'inserted into the ATLANTIS "Poetry" collection.\r\n<br /><br />'
         sdocname = u'DEMOPOE'
         cd = datetime.date(2008, 3, 12)
 
     class SbmDOCTYPE_DEMOTHE:
         md = datetime.date(2008, 3, 5)
         ldocname = u'Demo Thesis Submission'
-        description = u'<br />\r\n<br />\r\nThe Demo Thesis submission demonstrates a very simple submission type.<br />\r\nIt has no categories, submits directly into the ATLANTIS "Theses" collection and also stamps full-text files.\r\n<br /><br />\r\n'
+        description = u'<br />\r\n<br />\r\nThe Demo Thesis submission ' + \
+            'demonstrates a very simple submission type.<br />\r\nIt has ' + \
+            'no categories, submits directly into the ATLANTIS "Theses" ' + \
+            'collection and also stamps full-text files.\r\n<br /><br />\r\n'
         sdocname = u'DEMOTHE'
         cd = datetime.date(2008, 3, 2)
 
     class SbmDOCTYPE_DEMOVID:
         md = datetime.date(2012, 2, 16)
         ldocname = u'Demo Video Submission'
-        description = u'This is a prototype implementation of a video submission workflow. It will generate all necessary files and video formats from one file uploaded to the system.'
+        description = u'This is a prototype implementation of a video ' + \
+            'submission workflow. It will generate all necessary files ' + \
+            'and video formats from one file uploaded to the system.'
         sdocname = u'DEMOVID'
         cd = datetime.date(2012, 2, 16)
 
 
 class SbmCOLLECTIONSbmDOCTYPEData(DataSet):
 
+    """SbmCOLLECTIONSbmDOCTYPEData."""
+
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOART:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOART.ref('sdocname')
         catalogue_order = 4L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        father = SbmCOLLECTIONData.SbmCOLLECTION_1
 
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOBOO:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOBOO.ref('sdocname')
         catalogue_order = 5L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        father = SbmCOLLECTIONData.SbmCOLLECTION_1
 
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOJRN:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOJRN.ref('sdocname')
         catalogue_order = 6L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        father = SbmCOLLECTIONData.SbmCOLLECTION_1
 
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOPIC:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOPIC.ref('sdocname')
         catalogue_order = 3L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        father = SbmCOLLECTIONData.SbmCOLLECTION_1
 
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOPOE:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOPOE.ref('sdocname')
         catalogue_order = 2L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        father = SbmCOLLECTIONData.SbmCOLLECTION_1
 
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOTHE:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOTHE.ref('sdocname')
         catalogue_order = 1L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        father = SbmCOLLECTIONData.SbmCOLLECTION_1
 
     class SbmCOLLECTIONSbmDOCTYPE_36_DEMOVID:
         id_son = SbmDOCTYPEData.SbmDOCTYPE_DEMOVID.ref('sdocname')
         catalogue_order = 7L
-        id_father = SbmCOLLECTIONData.SbmCOLLECTION_36.ref('id')
+        id_father = SbmCOLLECTIONData.SbmCOLLECTION_1.ref('id')
 
 
 class SbmCATEGORIESData(DataSet):
+
+    """SbmCATEGORIESData."""
 
     class SbmCATEGORIES_DEMOART_ARTICLE:
         lname = u'Article'
@@ -185,6 +232,8 @@ class SbmCATEGORIESData(DataSet):
 
 class SbmFIELDData(DataSet):
 
+    """SbmFIELDData."""
+
     class SbmFIELD_APPDEMOBOO_1_DEMOBOOCOMNT:
         fitext = u'<br /><br />Comments on Decision:<br />\r\n'
         checkn = u''
@@ -200,7 +249,8 @@ class SbmFIELDData(DataSet):
         subname = u'APPDEMOBOO'
 
     class SbmFIELD_APPDEMOBOO_1_DEMOBOODECSN:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Decision:<br />\r\n'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Decision:' + \
+            '<br />\r\n'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -228,9 +278,13 @@ class SbmFIELDData(DataSet):
         subname = u'APPDEMOBOO'
 
     class SbmFIELD_APPDEMOBOO_1_DEMOBOORN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Approve or reject an ATLANTIS book:</b><br /><br /><span style=\'color: red;\'>*</span>Book Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Approve or reject an ATLANTIS ' + \
+            'book:</b><br /><br /><span style=\'color: red;\'>*</span>' + \
+            'Book Reference Number:&nbsp;&nbsp;'
         checkn = u''
-        fiefi1 = None
+        i1 = None
         pagenb = 1L
         md = datetime.date(2008, 3, 7)
         sdesc = u'Reference Number'
@@ -242,7 +296,8 @@ class SbmFIELDData(DataSet):
         subname = u'APPDEMOBOO'
 
     class SbmFIELD_MBIDEMOART_1_DEMOARTCHANGE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the fields to be modified:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the ' + \
+            'fields to be modified:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -270,7 +325,11 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOART'
 
     class SbmFIELD_MBIDEMOART_1_DEMOARTRN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Modify an article\'s bibliographic information:</b><br /><br /><span style=\'color: red;\'>*</span>Document Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Modify an article\'s bibliographic ' + \
+            'information:</b><br /><br /><span style=\'color: red;\'>*' + \
+            '</span>Document Reference Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -284,7 +343,8 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOART'
 
     class SbmFIELD_MBIDEMOBOO_1_DEMOBOOCHANGE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the fields to be modified:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the ' + \
+            'fields to be modified:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -312,7 +372,11 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOBOO'
 
     class SbmFIELD_MBIDEMOBOO_1_DEMOBOORN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Modify a book\'s bibliographic information:</b><br /><br /><span style=\'color: red;\'>*</span>Book Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Modify a book\'s bibliographic ' + \
+            'information:</b><br /><br /><span style=\'color: red;\'>*' + \
+            '</span>Book Reference Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -354,7 +418,11 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOJRN'
 
     class SbmFIELD_MBIDEMOJRN_1_DEMOJRNRN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Update a journal article:</b><br /><br /><span style=\'color: red;\'>*</span>Document Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Update a journal article:</b>' + \
+            '<br /><br /><span style=\'color: red;\'>*</span>Document ' + \
+            'Reference Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -368,7 +436,8 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOJRN'
 
     class SbmFIELD_MBIDEMOPIC_1_DEMOPICCHANGE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the fields to be modified:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the ' + \
+            'fields to be modified:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -396,7 +465,11 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOPIC'
 
     class SbmFIELD_MBIDEMOPIC_1_DEMOPICRN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Modify a picture\'s bibliographic information:</b><br /><br /><span style=\'color: red;\'>*</span>Picture Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Modify a picture\'s bibliographic ' + \
+            'information:</b><br /><br /><span style=\'color: red;\'>*' + \
+            '</span>Picture Reference Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -410,7 +483,8 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOPIC'
 
     class SbmFIELD_MBIDEMOPOE_1_DEMOPOECHANGE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the fields to be modified:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the ' + \
+            'fields to be modified:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -438,7 +512,11 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOPOE'
 
     class SbmFIELD_MBIDEMOPOE_1_DEMOPOERN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Modify a poem\'s bibliographic information:</b><br /><br /><span style=\'color: red;\'>*</span>Poem Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Modify a poem\'s bibliographic ' + \
+            'information:</b><br /><br /><span style=\'color: red;\'>*' + \
+            '</span>Poem Reference Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -452,7 +530,8 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOPOE'
 
     class SbmFIELD_MBIDEMOTHE_1_DEMOTHECHANGE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the fields to be modified:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Choose the ' + \
+            'fields to be modified:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -480,7 +559,11 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOTHE'
 
     class SbmFIELD_MBIDEMOTHE_1_DEMOTHERN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Modify a thesis\' bibliographic information:</b><br /><br /><span style=\'color: red;\'>*</span>Thesis Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Modify a thesis\' bibliographic ' + \
+            'information:</b><br /><br /><span style=\'color: red;\'>*' + \
+            '</span>Thesis Reference Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -494,7 +577,8 @@ class SbmFIELDData(DataSet):
         subname = u'MBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTABS:
-        fitext = u'</td></tr></table><br /><span style="color: red;">*</span>Abstract:<br />'
+        fitext = u'</td></tr></table><br /><span style="color: red;">*</span>' + \
+            'Abstract:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -508,7 +592,9 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTAU:
-        fitext = u'<br /><br /><table width="100%"><tr><td valign="top"><span style="color: red;">*</span>Author of the Document: <i>(one per line)</i><br />'
+        fitext = u'<br /><br /><table width="100%"><tr><td valign="top">' + \
+            '<span style="color: red;">*</span>Author of the Document: <i>' + \
+            '(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -522,7 +608,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTDATE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Date of Document: <i>(dd/mm/yyyy)</i>&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Date of ' + \
+            'Document: <i>(dd/mm/yyyy)</i>&nbsp;'
         checkn = u'DatCheckNew'
         fiefi1 = None
         pagenb = 1L
@@ -564,7 +651,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTKW:
-        fitext = u'<br /><br />Keywords/Key-phrases: <i>(one per line)</i><br />'
+        fitext = u'<br /><br />Keywords/Key-phrases: <i>(one per line)</i>' + \
+            '<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -578,7 +666,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTLANG:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Language:&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>' + \
+            'Language:&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -620,7 +709,13 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTREP:
-        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left"><br /><b>Submit an ATLANTIS Article:</b><br /><br />Your document will be given a reference number automatically.<br /> However, if it has other reference numbers, please enter them here:<br /><i>(one per line)</i><br />'
+        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" ' + \
+            'CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR>' + \
+            '<TD ALIGN="left"><br /><b>Submit an ATLANTIS Article:</b>' + \
+            '<br /><br />Your document will be given a reference number ' + \
+            'automatically.<br /> However, if it has other reference ' + \
+            'numbers, please enter them here:<br /><i>(one per line)' + \
+            '</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -634,7 +729,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOART_1_DEMOARTTITLE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Document Title:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Document ' + \
+            'Title:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -648,7 +744,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOART'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOABS:
-        fitext = u'</td></tr></table><br /><span style="color: red;">*</span>Abstract:<br />'
+        fitext = u'</td></tr></table><br /><span style="color: red;">*</span>' + \
+            'Abstract:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -662,7 +759,9 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOAU:
-        fitext = u'<br /><br /><table width="100%"><tr><td valign="top"><span style="color: red;">*</span>Author of the Book: <i>(one per line)</i><br />'
+        fitext = u'<br /><br /><table width="100%"><tr><td valign="top">' + \
+            '<span style="color: red;">*</span>Author of the Book: <i>' + \
+            '(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -676,7 +775,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOODATE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Date of the Book: <i>(dd/mm/yyyy)</i>&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Date of ' + \
+            'the Book: <i>(dd/mm/yyyy)</i>&nbsp;'
         checkn = u'DatCheckNew'
         fiefi1 = None
         pagenb = 1L
@@ -704,7 +804,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOFILE:
-        fitext = u'<br><br>Enter the full path to the source file to upload:<br />'
+        fitext = u'<br><br>Enter the full path to the source file to ' + \
+            'upload:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -718,7 +819,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOKW:
-        fitext = u'<br /><br />Keywords/Key-phrases: <i>(one per line)</i><br />'
+        fitext = u'<br /><br />Keywords/Key-phrases: <i>(one per line)' + \
+            '</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -732,7 +834,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOLANG:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Language:&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>' + \
+            'Language:&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -774,7 +877,13 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOREP:
-        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left"><br /><b>Submit an ATLANTIS Book:</b><br /><br />Your book will be given a reference number automatically.<br /> However, if it has other reference numbers, please enter them here:<br /><i>(one per line)</i><br />'
+        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ' + \
+            'ALIGN="center" CELLSPACING="2" CELLPADDING="2" ' + \
+            'BORDER="1"><TR><TD ALIGN="left"><br /><b>Submit ' + \
+            'an ATLANTIS Book:</b><br /><br />Your book will ' + \
+            'be given a reference number automatically.<br /> ' + \
+            'However, if it has other reference numbers, please ' + \
+            'enter them here:<br /><i>(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -788,7 +897,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOBOO'
 
     class SbmFIELD_SBIDEMOBOO_1_DEMOBOOTITLE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Book Title:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>' + \
+            'Book Title:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -830,7 +940,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOJRN'
 
     class SbmFIELD_SBIDEMOJRN_1_DEMOJRNAU:
-        fitext = u'</td></TR><TR><TD><br /><br />Author(s): <i>(one per line)</i><br />'
+        fitext = u'</td></TR><TR><TD><br /><br />Author(s): <i>' + \
+            '(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -858,7 +969,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOJRN'
 
     class SbmFIELD_SBIDEMOJRN_1_DEMOJRNEMAIL:
-        fitext = u'</TD><TD><br /><br />E-mail(s) of the author(s): <i>(one per line)</i><br />'
+        fitext = u'</TD><TD><br /><br />E-mail(s) of the author(s): ' + \
+            '<i>(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -914,7 +1026,9 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOJRN'
 
     class SbmFIELD_SBIDEMOJRN_1_DEMOJRNISSUES:
-        fitext = u'</TD><TD align="center"><span style="color: red;">*</span>Order(s) <small><i>(digit)</i></small> and issue(s) <small><i>(xx/YYYY)</i></small> of the article:<br />'
+        fitext = u'</TD><TD align="center"><span style="color: red;">*' + \
+            '</span>Order(s) <small><i>(digit)</i></small> and ' + \
+            'issue(s) <small><i>(xx/YYYY)</i></small> of the article:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -956,7 +1070,11 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOJRN'
 
     class SbmFIELD_SBIDEMOJRN_1_DEMOJRNTYPE:
-        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left" colspan="2"><br /><b>Submit an Atlantis Times article:</b></TD></TR><TR><TD align="center"><span style="color: red;">*</span>Status:<br />'
+        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" ' + \
+            'CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR>' + \
+            '<TD ALIGN="left" colspan="2"><br /><b>Submit an Atlantis ' + \
+            'Times article:</b></TD></TR><TR><TD align="center"><span ' + \
+            'style="color: red;">*</span>Status:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -970,7 +1088,10 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOJRN'
 
     class SbmFIELD_SBIDEMOPIC_1_DEMOPICADDRN:
-        fitext = u'<br /><br />Your picture will be given a reference number automatically.<br /> However, if the picture has other reference numbers, please enter them here:<br /><i>(one per line)</i><br />'
+        fitext = u'<br /><br />Your picture will be given a reference ' + \
+            'number automatically.<br /> However, if the picture has ' + \
+            'other reference numbers, please enter them here:<br /><i>' + \
+            '(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -984,7 +1105,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPIC'
 
     class SbmFIELD_SBIDEMOPIC_1_DEMOPICDATE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Picture Date: <i>(dd/mm/yyyy)</i>&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>' + \
+            'Picture Date: <i>(dd/mm/yyyy)</i>&nbsp;'
         checkn = u'DatCheckNew'
         fiefi1 = None
         pagenb = 1L
@@ -1026,7 +1148,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPIC'
 
     class SbmFIELD_SBIDEMOPIC_1_DEMOPICKW:
-        fitext = u'<br /><br />Keywords:<br /><i>(one keyword/key-phrase per line)</i><br />'
+        fitext = u'<br /><br />Keywords:<br /><i>(one keyword/key-phrase' + \
+            ' per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1040,7 +1163,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPIC'
 
     class SbmFIELD_SBIDEMOPIC_1_DEMOPICNOTE:
-        fitext = u'<br /><br />Additional Comments or Notes about the Picture:<br />'
+        fitext = u'<br /><br />Additional Comments or Notes about the ' + \
+            'Picture:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1054,7 +1178,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPIC'
 
     class SbmFIELD_SBIDEMOPIC_1_DEMOPICPHOTOG:
-        fitext = u'<br /><br />Picture Author(s) or Photographers(s): <i>(one per line)</i><br />'
+        fitext = u'<br /><br />Picture Author(s) or Photographers(s): ' + \
+            '<i>(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1068,7 +1193,11 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPIC'
 
     class SbmFIELD_SBIDEMOPIC_1_DEMOPICTITLE:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b>Submit an ATLANTIS picture:</b><br /><br /><span style="color: red;">*</span>Picture Title:<br />'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b>Submit an ATLANTIS picture:' + \
+            '</b><br /><br /><span style="color: red;">*</span>' + \
+            'Picture Title:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1096,7 +1225,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPIC'
 
     class SbmFIELD_SBIDEMOPOE_1_DEMOPOEAU:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Author(s) of the Poem: <i>(one per line)</i><br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>' + \
+            'Author(s) of the Poem: <i>(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1124,7 +1254,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPOE'
 
     class SbmFIELD_SBIDEMOPOE_1_DEMOPOELANG:
-        fitext = u'<br /><br /><table width="100%"><tr><td valign="top"><span style="color: red;">*</span>Poem Language:&nbsp;'
+        fitext = u'<br /><br /><table width="100%"><tr><td valign="top">' + \
+            '<span style="color: red;">*</span>Poem Language:&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1138,7 +1269,10 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPOE'
 
     class SbmFIELD_SBIDEMOPOE_1_DEMOPOETITLE:
-        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left"><br /><b>Submit an ATLANTIS Poem:</b><br /><br /><span style="color: red;">*</span>Poem Title:<br />'
+        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" ' + \
+            'CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR>' + \
+            '<TD ALIGN="left"><br /><b>Submit an ATLANTIS Poem:</b>' + \
+            '<br /><br /><span style="color: red;">*</span>Poem Title:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1152,7 +1286,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPOE'
 
     class SbmFIELD_SBIDEMOPOE_1_DEMOPOEYEAR:
-        fitext = u'</td><td><span style="color: red;">*</span>Year of the Poem:&nbsp;'
+        fitext = u'</td><td><span style="color: red;">*</span>Year of the ' + \
+            'Poem:&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1166,7 +1301,10 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPOE'
 
     class SbmFIELD_SBIDEMOPOE_2_DEMOPOEABS:
-        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left"><br /><br /><span style="color: red;">*</span>Poem Text:<br />'
+        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" ' + \
+            'CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR>' + \
+            '<TD ALIGN="left"><br /><br /><span style="color: red;">*' + \
+            '</span>Poem Text:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 2L
@@ -1194,7 +1332,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOPOE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEABS:
-        fitext = u'</td></tr></table><br /><span style="color: red;">*</span>Abstract:<br />'
+        fitext = u'</td></tr></table><br /><span style="color: red;">*' + \
+            '</span>Abstract:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1208,7 +1347,9 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEAU:
-        fitext = u'<br /><br /><table width="100%"><tr><td valign="top"><span style="color: red;">*</span>Author of the Thesis: <i>(one per line)</i><br />'
+        fitext = u'<br /><br /><table width="100%"><tr><td valign="top">' + \
+            '<span style="color: red;">*</span>Author of the Thesis: ' + \
+            '<i>(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1222,7 +1363,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEDATE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Thesis Defence date <i>(dd/mm/yyyy)</i>:&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Thesis ' + \
+            'Defence date <i>(dd/mm/yyyy)</i>:&nbsp;'
         checkn = u'DatCheckNew'
         fiefi1 = None
         pagenb = 1L
@@ -1236,7 +1378,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEDIPL:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Diploma Awarded:&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Diploma ' + \
+            'Awarded:&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1264,7 +1407,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEFILE:
-        fitext = u'<br><br><span style="color: red;">*</span>Enter the full path to the source file to upload:<br />'
+        fitext = u'<br><br><span style="color: red;">*</span>Enter the ' + \
+            'full path to the source file to upload:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1334,7 +1478,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEPUBL:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Thesis Publisher (or Institute):&nbsp;'
+        fitext = u'<br /><br /><span style="color: red;">*</span>Thesis ' + \
+            'Publisher (or Institute):&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1348,7 +1493,13 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEREP:
-        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left"><br /><b>Submit an ATLANTIS Thesis:</b><br /><br />Your thesis will be given a reference number automatically.<br /> However, if it has other reference numbers, please enter them here:<br /><i>(one per line)</i><br />'
+        fitext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" ' + \
+            'CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR>' + \
+            '<TD ALIGN="left"><br /><b>Submit an ATLANTIS Thesis:</b>' + \
+            '<br /><br />Your thesis will be given a reference number ' + \
+            'automatically.<br /> However, if it has other reference ' + \
+            'numbers, please enter them here:<br /><i>(one per line)</i>' + \
+            '<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1376,7 +1527,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHESUPERV:
-        fitext = u'</td></tr><tr><td valign="top"><br>Thesis Supervisor(s): <i>(one per line)</i><br />'
+        fitext = u'</td></tr><tr><td valign="top"><br>Thesis ' + \
+            'Supervisor(s): <i>(one per line)</i><br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1390,7 +1542,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHETITLE:
-        fitext = u'<br /><br /><span style="color: red;">*</span>Thesis Title:<br />'
+        fitext = u'<br /><br /><span style="color: red;">*</span>' + \
+            'Thesis Title:<br />'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1404,7 +1557,8 @@ class SbmFIELDData(DataSet):
         subname = u'SBIDEMOTHE'
 
     class SbmFIELD_SBIDEMOTHE_1_DEMOTHEUNIV:
-        fitext = u'<br /><span style="color: red;">*</span>Awarding University:&nbsp;'
+        fitext = u'<br /><span style="color: red;">*</span>Awarding ' + \
+            'University:&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1460,7 +1614,11 @@ class SbmFIELDData(DataSet):
         subname = u'SRVDEMOPIC'
 
     class SbmFIELD_SRVDEMOPIC_1_DEMOPICRN:
-        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" cellspacing="2" cellpadding="2" border="1"><tr><td align="left"><br /><b> Revise/add pictures:</b><br /><br /><span style=\'color: red;\'>*</span>Picture Reference Number:&nbsp;&nbsp;'
+        fitext = u'<table width="100%" bgcolor="#D3E3E2" align="center" ' + \
+            'cellspacing="2" cellpadding="2" border="1"><tr>' + \
+            '<td align="left"><br /><b> Revise/add pictures:</b><br />' + \
+            '<br /><span style=\'color: red;\'>*</span>Picture Reference ' + \
+            'Number:&nbsp;&nbsp;'
         checkn = u''
         fiefi1 = None
         pagenb = 1L
@@ -1475,6 +1633,8 @@ class SbmFIELDData(DataSet):
 
 
 class SbmFIELDDESCData(DataSet):
+
+    """SbmFIELDDESCData."""
 
     class SbmFIELDDESC_DEMOARTABS:
         md = datetime.date(2008, 3, 7)
@@ -1519,7 +1679,17 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<select name=\"DEMOART_CHANGE[]\" size=\"9\" multiple>\r\n <option value=\"Select:\">Select:</option>\r\n <option value=\"DEMOART_REP\">Other Report Numbers</option>\r\n <option value=\"DEMOART_TITLE\">Title</option>\r\n <option value=\"DEMOART_AU\">Author(s)</option>\r\n <option value=\"DEMOART_LANG\">Language</option>\r\n <option value=\"DEMOART_KW\">Keywords</option>\r\n <option value=\"DEMOART_ABS\">Abstract</option>\r\n <option value=\"DEMOART_NUMP\">Number of Pages</option>\r\n <option value=\"DEMOART_FILE\">File(s)</option>\r\n</select>'
+        fidesc = u'<select name=\"DEMOART_CHANGE[]\" size=\"9\" ' + \
+            'multiple>\r\n <option value=\"Select:\">Select:' + \
+            '</option>\r\n <option value=\"DEMOART_REP\">Other ' + \
+            'Report Numbers</option>\r\n <option ' + \
+            'value=\"DEMOART_TITLE\">Title</option>\r\n <option ' + \
+            'value=\"DEMOART_AU\">Author(s)</option>\r\n <option ' + \
+            'value=\"DEMOART_LANG\">Language</option>\r\n <option ' + \
+            'value=\"DEMOART_KW\">Keywords</option>\r\n <option ' + \
+            'value=\"DEMOART_ABS\">Abstract</option>\r\n <option ' + \
+            'value=\"DEMOART_NUMP\">Number of Pages</option>\r\n ' + \
+            '<option value=\"DEMOART_FILE\">File(s)</option>\r\n</select>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1536,7 +1706,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="Continue" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" ' + \
+            'name="endS" value="Continue" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1570,7 +1742,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" class="adminbutton" name="endS" width="400" height="50" value="Finish Submission" onclick="finish();">\r\n</div>'
+        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" ' + \
+            'class="adminbutton" name="endS" width="400" height="50" ' + \
+            'value="Finish Submission" onclick="finish();">\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1587,7 +1761,42 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'\"\"\"\r\nThis is an example of element that creates a file upload interface.\r\nClone it, customize it and integrate it into your submission. Then add function \r\n\'Move_Uploaded_Files_to_Storage\' to your submission functions list, in order for files \r\nuploaded with this interface to be attached to the record. More information in \r\nthe WebSubmit admin guide.\r\n\"\"\"\r\nimport os\r\nfrom invenio.bibdocfile_managedocfiles import create_file_upload_interface\r\nfrom invenio.websubmit_functions.Shared_Functions import ParamFromFile\r\n\r\nindir = ParamFromFile(os.path.join(curdir, \'indir\'))\r\ndoctype = ParamFromFile(os.path.join(curdir, \'doctype\'))\r\naccess = ParamFromFile(os.path.join(curdir, \'access\'))\r\ntry:\r\n    sysno = int(ParamFromFile(os.path.join(curdir, \'SN\')).strip())\r\nexcept:\r\n    sysno = -1\r\nln = ParamFromFile(os.path.join(curdir, \'ln\'))\r\n\r\n\"\"\"\r\nRun the following to get the list of parameters of function \'create_file_upload_interface\':\r\necho -e \'from invenio.bibdocfile_managedocfiles import create_file_upload_interface as f\\nprint f.__doc__\' | python\r\n\"\"\"\r\ntext = create_file_upload_interface(recid=sysno,\r\n                                 print_outside_form_tag=False,\r\n                                 include_headers=True,\r\n                                 ln=ln,\r\n                                 doctypes_and_desc=[(\'main\',\'Main document\'),\r\n                                                    (\'additional\',\'Figure, schema, etc.\')],\r\n                                 can_revise_doctypes=[\'*\'],\r\n                                 can_describe_doctypes=[\'main\'],\r\n                                 can_delete_doctypes=[\'additional\'],\r\n                                 can_rename_doctypes=[\'main\'],\r\n                                 sbm_indir=indir, sbm_doctype=doctype, sbm_access=access)[1]\r\n'
+        fidesc = u'\"\"\"\r\nThis is an example of element that creates ' + \
+            'a file upload interface.\r\nClone it, customize it and ' + \
+            'integrate it into your submission. Then add function \r\n\'' + \
+            'Move_Uploaded_Files_to_Storage\' to your submission functions ' + \
+            'list, in order for files \r\nuploaded with this interface to ' + \
+            'be attached to the record. More information in \r\nthe ' + \
+            'WebSubmit admin guide.\r\n\"\"\"\r\nimport os\r\nfrom ' + \
+            'invenio.bibdocfile_managedocfiles import ' + \
+            'create_file_upload_interface\r\nfrom ' + \
+            'invenio.websubmit_functions.Shared_Functions import ' + \
+            'ParamFromFile\r\n\r\nindir = ParamFromFile(os.path.join(' + \
+            'curdir, \'indir\'))\r\ndoctype = ParamFromFile(os.path.join(' + \
+            'curdir, \'doctype\'))\r\naccess = ParamFromFile(os.path.join(' + \
+            'curdir, \'access\'))\r\ntry:\r\n    ' + \
+            'sysno = int(ParamFromFile(os.path.join(curdir, ' + \
+            '\'SN\')).strip())\r\nexcept:\r\n    sysno = -1\r\nln = ' + \
+            'ParamFromFile(os.path.join(curdir, \'ln\'))\r\n\r\n\"\"\"\r\n' + \
+            'Run the following to get the list of parameters of function ' + \
+            '\'create_file_upload_interface\':\r\necho -e \'from ' + \
+            'invenio.bibdocfile_managedocfiles import ' + \
+            'create_file_upload_interface as f\\nprint f.__doc__\' | ' + \
+            'python\r\n\"\"\"\r\ntext = create_file_upload_interface(' + \
+            'recid=sysno,\r\n                                 ' + \
+            'print_outside_form_tag=False,\r\n                          ' + \
+            '       include_headers=True,\r\n                           ' + \
+            '      ln=ln,\r\n                                 ' + \
+            'doctypes_and_desc=[(\'main\',\'Main document\'),\r\n       ' + \
+            '                                             (\'additional\',' + \
+            '\'Figure, schema, etc.\')],\r\n                            ' + \
+            '     can_revise_doctypes=[\'*\'],\r\n                      ' + \
+            '           can_describe_doctypes=[\'main\'],\r\n           ' + \
+            '                      can_delete_doctypes=[\'additional\'],' + \
+            '\r\n                                 can_rename_doctypes=' + \
+            '[\'main\'],\r\n                                 ' + \
+            'sbm_indir=indir, sbm_doctype=doctype, sbm_access=access)' + \
+            '[1]\r\n'
         cookie = 0L
         maxlength = None
         size = 60L
@@ -1610,7 +1819,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'<br /><br />Keywords:<br /><i>(one keyword/key-phrase per line)</i><br />'
+        modifytext = u'<br /><br />Keywords:<br /><i>(one ' + \
+            'keyword/key-phrase per line)</i><br />'
 
     class SbmFIELDDESC_DEMOARTLANG:
         md = datetime.date(2008, 3, 7)
@@ -1621,7 +1831,21 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<SELECT name="DEMOART_LANG">\r\n        <option value="Select:">Select:</option>\r\n        <option value="eng">English</option>\r\n        <option value="fre">French</option>\r\n        <option value="ger">German</option>\r\n        <option value="dut">Dutch</option>\r\n        <option value="ita">Italian</option>\r\n        <option value="spa">Spanish</option>\r\n        <option value="por">Portuguese</option>\r\n        <option value="gre">Greek</option>\r\n        <option value="slo">Slovak</option>\r\n        <option value="cze">Czech</option>\r\n        <option value="hun">Hungarian</option>\r\n        <option value="pol">Polish</option>\r\n        <option value="nor">Norwegian</option>\r\n        <option value="swe">Swedish</option>\r\n        <option value="fin">Finnish</option>\r\n        <option value="rus">Russian</option>\r\n</SELECT>'
+        fidesc = u'<SELECT name="DEMOART_LANG">\r\n        <option ' + \
+            'value="Select:">Select:</option>\r\n        <option ' + \
+            'value="eng">English</option>\r\n        <option value="fre">' + \
+            'French</option>\r\n        <option value="ger">German</option>' + \
+            '\r\n        <option value="dut">Dutch</option>\r\n        ' + \
+            '<option value="ita">Italian</option>\r\n        <option ' + \
+            'value="spa">Spanish</option>\r\n        <option value="por">' + \
+            'Portuguese</option>\r\n        <option value="gre">Greek' + \
+            '</option>\r\n        <option value="slo">Slovak</option>\r\n' + \
+            '        <option value="cze">Czech</option>\r\n        ' + \
+            '<option value="hun">Hungarian</option>\r\n        <option ' + \
+            'value="pol">Polish</option>\r\n        <option value="nor">' + \
+            'Norwegian</option>\r\n        <option value="swe">Swedish' + \
+            '</option>\r\n        <option value="fin">Finnish</option>\r\n' + \
+            '        <option value="rus">Russian</option>\r\n</SELECT>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1757,7 +1981,15 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<select name="DEMOBOO_CHANGE[]" size="9" multiple>\r\n <option value="Select:">Select:</option>\r\n <option value="DEMOBOO_REP">Other Report Numbers</option>\r\n <option value="DEMOBOO_TITLE">Title</option>\r\n <option value="DEMOBOO_AU">Author(s)</option>\r\n <option value="DEMOBOO_LANG">Language</option>\r\n <option value="DEMOBOO_KW">Keywords</option>\r\n <option value="DEMOBOO_ABS">Abstract</option>\r\n <option value="DEMOBOO_NUMP">Number of Pages</option>\r\n <option value="DEMOBOO_FILE">File</option>\r\n</select>'
+        fidesc = u'<select name="DEMOBOO_CHANGE[]" size="9" multiple>\r\n ' + \
+            '<option value="Select:">Select:</option>\r\n <option value=' + \
+            '"DEMOBOO_REP">Other Report Numbers</option>\r\n <option value=' + \
+            '"DEMOBOO_TITLE">Title</option>\r\n <option value="DEMOBOO_AU">' + \
+            'Author(s)</option>\r\n <option value="DEMOBOO_LANG">Language' + \
+            '</option>\r\n <option value="DEMOBOO_KW">Keywords</option>\r\n ' + \
+            '<option value="DEMOBOO_ABS">Abstract</option>\r\n <option ' + \
+            'value="DEMOBOO_NUMP">Number of Pages</option>\r\n <option ' + \
+            'value="DEMOBOO_FILE">File</option>\r\n</select>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1791,7 +2023,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="Continue" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="Continue" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1825,7 +2059,10 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<select name="DEMOBOO_DECSN">\r\n<option value="Select:">Select:</option>\r\n<option value="approve">Approve</option>\r\n<option value="reject">Reject</option>\r\n</select>\r\n'
+        fidesc = u'<select name="DEMOBOO_DECSN">\r\n<option ' + \
+            'value="Select:">Select:</option>\r\n<option ' + \
+            'value="approve">Approve</option>\r\n<option value="reject">' + \
+            'Reject</option>\r\n</select>\r\n'
         cookie = 0L
         maxlength = None
         size = None
@@ -1842,7 +2079,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" class="adminbutton" name="endS" width="400" height="50" value="Finish Submission" onclick="finish();">\r\n</div>'
+        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" ' + \
+            'class="adminbutton" name="endS" width="400" height="50" ' + \
+            'value="Finish Submission" onclick="finish();">\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1882,7 +2121,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'<br /><br />Keywords:<br /><i>(one keyword/key-phrase per line)</i><br />'
+        modifytext = u'<br /><br />Keywords:<br /><i>(one ' + \
+            'keyword/key-phrase per line)</i><br />'
 
     class SbmFIELDDESC_DEMOBOOLANG:
         md = datetime.date(2008, 3, 7)
@@ -1893,7 +2133,24 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<SELECT name="DEMOBOO_LANG">\r\n        <option value="Select:">Select:</option>\r\n        <option value="eng">English</option>\r\n        <option value="fre">French</option>\r\n        <option value="ger">German</option>\r\n        <option value="dut">Dutch</option>\r\n        <option value="ita">Italian</option>\r\n        <option value="spa">Spanish</option>\r\n        <option value="por">Portuguese</option>\r\n        <option value="gre">Greek</option>\r\n        <option value="slo">Slovak</option>\r\n        <option value="cze">Czech</option>\r\n        <option value="hun">Hungarian</option>\r\n        <option value="pol">Polish</option>\r\n        <option value="nor">Norwegian</option>\r\n        <option value="swe">Swedish</option>\r\n        <option value="fin">Finnish</option>\r\n        <option value="rus">Russian</option>\r\n</SELECT>'
+        fidesc = u'<SELECT name="DEMOBOO_LANG">\r\n        ' + \
+            '<option value="Select:">Select:</option>\r\n        ' + \
+            '<option value="eng">English</option>\r\n        ' + \
+            '<option value="fre">French</option>\r\n        ' + \
+            '<option value="ger">German</option>\r\n        ' + \
+            '<option value="dut">Dutch</option>\r\n        ' + \
+            '<option value="ita">Italian</option>\r\n        ' + \
+            '<option value="spa">Spanish</option>\r\n        ' + \
+            '<option value="por">Portuguese</option>\r\n        ' + \
+            '<option value="gre">Greek</option>\r\n        ' + \
+            '<option value="slo">Slovak</option>\r\n        ' + \
+            '<option value="cze">Czech</option>\r\n        ' + \
+            '<option value="hun">Hungarian</option>\r\n        ' + \
+            '<option value="pol">Polish</option>\r\n        ' + \
+            '<option value="nor">Norwegian</option>\r\n        ' + \
+            '<option value="swe">Swedish</option>\r\n        ' + \
+            '<option value="fin">Finnish</option>\r\n        ' + \
+            '<option value="rus">Russian</option>\r\n</SELECT>'
         cookie = 0L
         maxlength = None
         size = None
@@ -1944,7 +2201,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 7)
-        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" class="adminbutton" name="endS" width="400" height="50" value="Register Decision" onclick="finish();">\r\n</div>'
+        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" ' + \
+            'class="adminbutton" name="endS" width="400" height="50" ' + \
+            'value="Register Decision" onclick="finish();">\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2012,7 +2271,21 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = 90L
         cd = datetime.date(2008, 9, 22)
-        fidesc = u'from invenio.utils.html import get_html_text_editor\r\nfrom invenio.config import CFG_SITE_URL\r\nfrom invenio.legacy.bibrecord import get_fieldvalues\r\nimport os\r\n\r\n\r\nif (\'modify\' in curdir) and not os.path.exists("%s/DEMOJRN_ABSE" % curdir):\r\n    try:\r\n        content = get_fieldvalues(int(sysno), \'520__b\')[0]\r\n    except:\r\n        content = \'\'\r\nelif os.path.exists("%s/DEMOJRN_ABSE" % curdir):\r\n    content = file("%s/DEMOJRN_ABSE" % curdir).read()\r\nelse:\r\n    content = \'\'\r\n\r\ntext = get_html_text_editor("DEMOJRN_ABSE",id="BulletinCKEditor2", content=content, toolbar_set="WebJournal", width=\'522px\', height=\'700px\', file_upload_url=CFG_SITE_URL + \'/submit/attachfile\', custom_configurations_path=\'/ckeditor/journal-editor-config.js\')\r\n\r\n'
+        fidesc = u'from invenio.utils.html import get_html_text_editor\r\n' + \
+            'from invenio.config import CFG_SITE_URL\r\n' + \
+            'from invenio.legacy.bibrecord import get_fieldvalues\r\nimport os' + \
+            '\r\n\r\n\r\nif (\'modify\' in curdir) and not os.path.exists' + \
+            '("%s/DEMOJRN_ABSE" % curdir):\r\n    try:\r\n        ' + \
+            'content = get_fieldvalues(int(sysno), \'520__b\')[0]\r\n    ' + \
+            'except:\r\n        content = \'\'\r\nelif os.path.exists' + \
+            '("%s/DEMOJRN_ABSE" % curdir):\r\n    content = ' + \
+            'file("%s/DEMOJRN_ABSE" % curdir).read()\r\nelse:\r\n    ' + \
+            'content = \'\'\r\n\r\ntext = get_html_text_editor(' + \
+            '"DEMOJRN_ABSE",id="BulletinCKEditor2", content=content, ' + \
+            'toolbar_set="WebJournal", width=\'522px\', height=\'700px\', ' + \
+            'file_upload_url=CFG_SITE_URL + \'/submit/attachfile\', ' + \
+            'custom_configurations_path=\'/ckeditor/journal-editor-' + \
+            'config.js\')\r\n\r\n'
         cookie = 0L
         maxlength = None
         size = None
@@ -2029,7 +2302,20 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = 90L
         cd = datetime.date(2008, 9, 23)
-        fidesc = u'from invenio.utils.html import get_html_text_editor\r\nfrom invenio.config import CFG_SITE_URL\r\nfrom invenio.legacy.bibrecord import get_fieldvalues\r\nimport os\r\n\r\nif (\'modify\' in curdir) and not os.path.exists("%s/DEMOJRN_ABSF" % curdir):\r\n    try:\r\n        content = get_fieldvalues(int(sysno), \'590__b\')[0]\r\n    except:\r\n        content = \'\'\r\nelif os.path.exists("%s/DEMOJRN_ABSE" % curdir):\r\n    content = file("%s/DEMOJRN_ABSE" % curdir).read()\r\nelse:\r\n    content = \'\'\r\n\r\ntext = get_html_text_editor("DEMOJRN_ABSF", id="BulletinCKEditor1", content=content, toolbar_set="WebJournal", width=\'522px\', height=\'700px\', file_upload_url=CFG_SITE_URL + \'/submit/attachfile\', custom_configurations_path=\'/ckeditor/journal-editor-config.js\')'
+        fidesc = u'from invenio.utils.html import ' + \
+            'get_html_text_editor\r\nfrom invenio.config import ' + \
+            'CFG_SITE_URL\r\nfrom invenio.legacy.bibrecord import ' + \
+            'get_fieldvalues\r\nimport os\r\n\r\nif (\'modify\' in curdir) ' + \
+            'and not os.path.exists("%s/DEMOJRN_ABSF" % curdir):\r\n    ' + \
+            'try:\r\n        content = get_fieldvalues(int(sysno), ' + \
+            '\'590__b\')[0]\r\n    except:\r\n        content = ' + \
+            '\'\'\r\nelif os.path.exists("%s/DEMOJRN_ABSE" % curdir):' + \
+            '\r\n    content = file("%s/DEMOJRN_ABSE" % curdir).read()\r\n' + \
+            'else:\r\n    content = \'\'\r\n\r\ntext = get_html_text_editor(' + \
+            '"DEMOJRN_ABSF", id="BulletinCKEditor1", content=content, ' + \
+            'toolbar_set="WebJournal", width=\'522px\', height=\'700px\', ' + \
+            'file_upload_url=CFG_SITE_URL + \'/submit/attachfile\', ' + \
+            'custom_configurations_path=\'/ckeditor/journal-editor-config.js\')'
         cookie = 0L
         maxlength = None
         size = None
@@ -2052,7 +2338,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'</TD></TR><TR><TD><br /><br />Author(s): <i>(one per line)</i><br />'
+        modifytext = u'</TD></TR><TR><TD><br /><br />Author(s): <i>' + \
+            '(one per line)</i><br />'
 
     class SbmFIELDDESC_DEMOJRNCATEG:
         md = datetime.date(2009, 10, 15)
@@ -2063,7 +2350,17 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2009, 10, 15)
-        fidesc = u'# Solve usual problem with submit/direct?.. links that bypass \r\n# the comboXXX (category selection) of the submission. Retrieve \r\n# the value, and set it (only in the case of MBI)\r\n\r\nfrom invenio.legacy.bibrecord import get_fieldvalues\r\n\r\nif "modify" in curdir:\r\n    try:\r\n        comboDEMOJRNfile = file("%s/%s" % (curdir,\'comboDEMOJRN\'), \'w\')\r\n        report_number = get_fieldvalues(int(sysno), \'037__a\')[0]\r\n        category = report_number.split(\'-\')[1]\r\n        comboDEMOJRNfile.write(category)\r\n        comboDEMOJRNfile.close()\r\n    except:\r\n        text = \'\''
+        fidesc = u'# Solve usual problem with submit/direct?.. links that ' + \
+            'bypass \r\n# the comboXXX (category selection) of the ' + \
+            'submission. Retrieve \r\n# the value, and set it (only in ' + \
+            'the case of MBI)\r\n\r\nfrom invenio.legacy.bibrecord import ' + \
+            'get_fieldvalues\r\n\r\nif "modify" in curdir:\r\n    try:\r\n' + \
+            '        comboDEMOJRNfile = file("%s/%s" % (curdir,' + \
+            '\'comboDEMOJRN\'), \'w\')\r\n        report_number = ' + \
+            'get_fieldvalues(int(sysno), \'037__a\')[0]\r\n        ' + \
+            'category = report_number.split(\'-\')[1]\r\n        ' + \
+            'comboDEMOJRNfile.write(category)\r\n        ' + \
+            'comboDEMOJRNfile.close()\r\n    except:\r\n        text = \'\''
         cookie = 0L
         maxlength = None
         size = None
@@ -2080,7 +2377,20 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2009, 1, 9)
-        fidesc = u'<div id="1" STYLE="position:relative;visibility:hidden;">\r\n<select name="DEMOJRN_CHANGE[]" size="2" multiple>\r\n <option selected value="DEMOJRN_TYPE">3</option>\r\n <option selected value="DEMOJRN_ISSUES">4</option>\r\n <option selected value="DEMOJRN_AU">12</option>\r\n <option selected value="DEMOJRN_EMAIL">13</option>\r\n <option selected value="DEMOJRN_TITLEE">14</option>\r\n <option selected value="DEMOJRN_TITLEF">15</option>\r\n <option selected value="DEMOJRN_ABSE">16</option>\r\n <option selected value="DEMOJRN_ABSF">17</option>\r\n <option selected value="DEMOJRN_IN">18</option>\r\n <option selected value="DEMOJRN_ENDING">19</option>\r\n</select>\r\n <option selected value="DEMOJRN_CATEG">20</option>\r\n</select>\r\n</div>'
+        fidesc = u'<div id="1" STYLE="position:relative;visibility:' + \
+            'hidden;">\r\n<select name="DEMOJRN_CHANGE[]" size="2" ' + \
+            'multiple>\r\n <option selected value="DEMOJRN_TYPE">3' + \
+            '</option>\r\n <option selected value="DEMOJRN_ISSUES">4' + \
+            '</option>\r\n <option selected value="DEMOJRN_AU">12' + \
+            '</option>\r\n <option selected value="DEMOJRN_EMAIL">13' + \
+            '</option>\r\n <option selected value="DEMOJRN_TITLEE">14' + \
+            '</option>\r\n <option selected value="DEMOJRN_TITLEF">15' + \
+            '</option>\r\n <option selected value="DEMOJRN_ABSE">16' + \
+            '</option>\r\n <option selected value="DEMOJRN_ABSF">17' + \
+            '</option>\r\n <option selected value="DEMOJRN_IN">18' + \
+            '</option>\r\n <option selected value="DEMOJRN_ENDING">19' + \
+            '</option>\r\n</select>\r\n <option selected value=' + \
+            '"DEMOJRN_CATEG">20</option>\r\n</select>\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2097,7 +2407,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 10, 6)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="Continue" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="Continue" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2120,7 +2432,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'</TD><TD><br /><br />E-mail(s) of the author(s): <i>(one per line)</i><br />'
+        modifytext = u'</TD><TD><br /><br />E-mail(s) of the author(s):' + \
+            ' <i>(one per line)</i><br />'
 
     class SbmFIELDDESC_DEMOJRNEND:
         md = datetime.date(2009, 2, 20)
@@ -2131,7 +2444,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 9, 23)
-        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" class="adminbutton" name="endS" width="400" height="50" value="Finish Submission" onclick="finish();">\r\n</div>'
+        fidesc = u'<div align="center">\r\n<INPUT TYPE="button"' + \
+            ' class="adminbutton" name="endS" width="400" height="50"' + \
+            ' value="Finish Submission" onclick="finish();">\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2182,13 +2497,42 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2009, 2, 20)
-        fidesc = u'from invenio.legacy.bibrecord import get_fieldvalues\r\nfrom invenio.legacy.webjournal.utils import get_next_journal_issues, get_current_issue, get_journal_issue_grouping\r\nimport os\r\n\r\norders_and_issues = [(\'\',\'\')]*4\r\n\r\nif (\'modify\' in curdir) and not os.path.exists("%s/DEMOJRN_ISSUE1" % curdir):\r\n    try:\r\n        orders = get_fieldvalues(int(sysno), \'773__c\')\r\n        issues = get_fieldvalues(int(sysno), \'773__n\')\r\n        orders_and_issues = zip(orders, issues) + orders_and_issues\r\n    except:\r\n        pass\r\nelif (\'running\' in curdir) and not os.path.exists("%s/DEMOJRN_ISSUE1" % curdir):\r\n    try:\r\n        journal_name = \'AtlantisTimes\'\r\n        current_issue = get_current_issue(\'en\', journal_name)\r\n        nb_issues = get_journal_issue_grouping(journal_name)\r\n        next_issue_numbers = get_next_journal_issues(current_issue, journal_name, nb_issues)\r\n        orders_and_issues = zip([\'\']*4, next_issue_numbers) + orders_and_issues\r\n    except:\r\n        pass\r\nissues_fields = []\r\nsingle_issue_and_order_tmpl = \'\'\'\r\n<input type="text" name="DEMOJRN_ORDER%i" size="2" value="%s"  />\r\n<input type="text" name="DEMOJRN_ISSUE%i" size="7" value="%s"  />\'\'\'\r\ni = 1\r\nfor order_and_issue in orders_and_issues[:4]:\r\n    order = order_and_issue[0]\r\n    issue = order_and_issue[1]\r\n    issues_fields.append(single_issue_and_order_tmpl % (i, order, i, issue))\r\n    i += 1\r\n\r\ntext = \'<br/>\'.join(issues_fields)\r\n'
+        fidesc = u'from invenio.legacy.bibrecord import get_fieldvalues' + \
+            '\r\nfrom invenio.legacy.webjournal.utils import ' + \
+            'get_next_journal_issues, get_current_issue, ' + \
+            'get_journal_issue_grouping\r\nimport os\r\n\r\n' + \
+            'orders_and_issues = [(\'\',\'\')]*4\r\n\r\nif (\'modify\' ' + \
+            'in curdir) and not os.path.exists("%s/DEMOJRN_ISSUE1" % ' + \
+            'curdir):' '\r\n    try:\r\n        orders = get_fieldvalues' + \
+            '(int(sysno), \'773__c\')\r\n        issues = get_fieldvalues' + \
+            '(int(sysno), \'773__n\')\r\n        orders_and_issues = ' + \
+            'zip(orders, issues) + orders_and_issues\r\n    except:\r\n' + \
+            '        pass\r\nelif (\'running\' in curdir) and not ' + \
+            'os.path.exists("%s/DEMOJRN_ISSUE1" % curdir):\r\n    try:\r\n' + \
+            '        journal_name = \'AtlantisTimes\'\r\n        ' + \
+            'current_issue = get_current_issue(\'en\', journal_name)\r\n' + \
+            '        nb_issues = get_journal_issue_grouping(journal_name)' + \
+            '\r\n        next_issue_numbers = get_next_journal_issues(' + \
+            'current_issue, journal_name, nb_issues)\r\n        ' + \
+            'orders_and_issues = zip([\'\']*4, next_issue_numbers) + ' + \
+            'orders_and_issues\r\n    except:\r\n        pass\r\n' + \
+            'issues_fields = []\r\nsingle_issue_and_order_tmpl = ' + \
+            '\'\'\'\r\n<input type="text" name="DEMOJRN_ORDER%i" ' + \
+            'size="2" value="%s"  />\r\n<input type="text" ' + \
+            'name="DEMOJRN_ISSUE%i" size="7" value="%s"  />\'\'\'\r\ni ' + \
+            '= 1\r\nfor order_and_issue in orders_and_issues[:4]:\r\n' + \
+            '    order = order_and_issue[0]\r\n    issue = ' + \
+            'order_and_issue[1]\r\n    issues_fields.append(' + \
+            'single_issue_and_order_tmpl % (i, order, i, issue))\r\n    ' + \
+            'i += 1\r\n\r\ntext = \'<br/>\'.join(issues_fields)\r\n'
         cookie = 0L
         maxlength = None
         size = None
         type = u'R'
         alephcode = None
-        modifytext = u'</TD><TD align="center"><span style="color: red;">*</span>Order(s) <small><i>(digit)</i></small> and issue(s) <small><i>(xx/YYYY)</i></small> of the article:<br />'
+        modifytext = u'</TD><TD align="center"><span style="color: red;">*' + \
+            '</span>Order(s) <small><i>(digit)</i></small> and issue(s) ' + \
+            '<small><i>(xx/YYYY)</i></small> of the article:<br />'
 
     class SbmFIELDDESC_DEMOJRNRN:
         md = datetime.date(2009, 2, 20)
@@ -2250,13 +2594,22 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 12, 4)
-        fidesc = u'<select name="DEMOJRN_TYPE">\r\n<option value="Select:">Select:</option>\r\n\r\n<option value="DRAFT">Offline</option>\r\n<option value="ONLINE">Online</option>\r\n</select><small>[<a target="_blank" href="/help/admin/webjournal-editor-guide#offlineVsOnline">?</a>]</small>'
+        fidesc = u'<select name="DEMOJRN_TYPE">\r\n<option value="Select:">' + \
+            'Select:</option>\r\n\r\n<option value="DRAFT">Offline</option>' + \
+            '\r\n<option value="ONLINE">Online</option>\r\n</select><small>' + \
+            '[<a target="_blank" href="/help/admin/webjournal-editor' + \
+            '-guide#offlineVsOnline">?</a>]</small>'
         cookie = 0L
         maxlength = None
         size = None
         type = u'S'
         alephcode = None
-        modifytext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ALIGN="center" CELLSPACING="2" CELLPADDING="2" BORDER="1"><TR><TD ALIGN="left" colspan="2"><br /><b>Update an Atlantis Times article:</b></TD></TR><TR><TD align="center"><span style="color: red;">*</span>Status:<br />'
+        modifytext = u'<TABLE WIDTH="100%" BGCOLOR="#D3E3E2" ' + \
+            'ALIGN="center" CELLSPACING="2" CELLPADDING="2" ' + \
+            'BORDER="1"><TR><TD ALIGN="left" colspan="2"><br />' + \
+            '<b>Update an Atlantis Times article:</b></TD></TR>' + \
+            '<TR><TD align="center"><span style="color: red;">*' + \
+            '</span>Status:<br />'
 
     class SbmFIELDDESC_DEMOPICADDRN:
         md = datetime.date(2007, 9, 13)
@@ -2284,7 +2637,17 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2007, 10, 4)
-        fidesc = u'<select name="DEMOPIC_CHANGE[]" size="8" multiple>\r\n <option value="Select:">Select:</option>\r\n <option value="DEMOPIC_TITLE">Title</option>\r\n <option value="DEMOPIC_PHOTOG">Photographer(s)</option>\r\n <option value="DEMOPIC_DATE">Picture Date</option>\r\n <option value="DEMOPIC_KW">Keywords</option>\r\n <option value="DEMOPIC_DESCR">Picture Description</option>\r\n <option value="DEMOPIC_ADD_RN">Picture Reference Numbers</option>\r\n <option value="DEMOPIC_NOTE">Notes or Comments</option>\r\n <option value="Upload_Photos">Pictures</option>\r\n</select>'
+        fidesc = u'<select name="DEMOPIC_CHANGE[]" size="8" multiple>\r\n' + \
+            ' <option value="Select:">Select:</option>\r\n ' + \
+            '<option value="DEMOPIC_TITLE">Title</option>\r\n ' + \
+            '<option value="DEMOPIC_PHOTOG">Photographer(s)</option>\r\n ' + \
+            '<option value="DEMOPIC_DATE">Picture Date</option>\r\n ' + \
+            '<option value="DEMOPIC_KW">Keywords</option>\r\n ' + \
+            '<option value="DEMOPIC_DESCR">Picture Description</option>\r\n ' + \
+            '<option value="DEMOPIC_ADD_RN">Picture Reference Numbers' + \
+            '</option>\r\n <option value="DEMOPIC_NOTE">Notes or Comments' + \
+            '</option>\r\n <option value="Upload_Photos">Pictures</option>' + \
+            '\r\n</select>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2301,7 +2664,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2007, 10, 4)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="Continue" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="Continue" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2369,7 +2734,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2007, 9, 13)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="finish submission" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="finish submission" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2392,7 +2759,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'<br /><br />Keywords<br /><i>(Optional, <b>one keyword/key-phrase per line</b>)</i>:<br />'
+        modifytext = u'<br /><br />Keywords<br /><i>(Optional, <b>one ' + \
+            'keyword/key-phrase per line</b>)</i>:<br />'
 
     class SbmFIELDDESC_DEMOPICNOTE:
         md = datetime.date(2007, 9, 13)
@@ -2409,7 +2777,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'<br /><br />Additional Comments or Notes about the Picture:<br />'
+        modifytext = u'<br /><br />Additional Comments or Notes about ' + \
+            'the Picture:<br />'
 
     class SbmFIELDDESC_DEMOPICPHOTOG:
         md = datetime.date(2007, 9, 19)
@@ -2426,7 +2795,8 @@ class SbmFIELDDESCData(DataSet):
         size = None
         type = u'T'
         alephcode = None
-        modifytext = u'<br /><br />Picture Author(s) or Photographers(s)<br /><i>(optional)(<B>one per line</B>)</i>:<br />'
+        modifytext = u'<br /><br />Picture Author(s) or Photographers(s)' + \
+            '<br /><i>(optional)(<B>one per line</B>)</i>:<br />'
 
     class SbmFIELDDESC_DEMOPICRN:
         md = datetime.date(2007, 10, 4)
@@ -2505,7 +2875,13 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 12)
-        fidesc = u'<select name="DEMOPOE_CHANGE[]" size="6" multiple>\r\n <option value="Select:">Select:</option>\r\n <option value="DEMOPOE_TITLE">Title</option>\r\n <option value="DEMOPOE_AU">Author(s)</option>\r\n <option value="DEMOPOE_LANG">Language</option>\r\n <option value="DEMOPOE_YEAR">Year</option>\r\n <option value="DEMOPOE_ABS">Poem Text</option>\r\n</select>\r\n'
+        fidesc = u'<select name="DEMOPOE_CHANGE[]" size="6" multiple>\r\n ' + \
+            '<option value="Select:">Select:</option>\r\n ' + \
+            '<option value="DEMOPOE_TITLE">Title</option>\r\n ' + \
+            '<option value="DEMOPOE_AU">Author(s)</option>\r\n ' + \
+            '<option value="DEMOPOE_LANG">Language</option>\r\n ' + \
+            '<option value="DEMOPOE_YEAR">Year</option>\r\n ' + \
+            '<option value="DEMOPOE_ABS">Poem Text</option>\r\n</select>\r\n'
         cookie = 0L
         maxlength = None
         size = None
@@ -2522,7 +2898,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 12)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="Continue" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="Continue" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2556,7 +2934,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 12)
-        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" class="adminbutton" name="endS" width="400" height="50" value="Finish Submission" onclick="finish();">\r\n</div>'
+        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" ' + \
+            'class="adminbutton" name="endS" width="400" height="50" ' + \
+            'value="Finish Submission" onclick="finish();">\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2573,7 +2953,24 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 12)
-        fidesc = u'<SELECT name="DEMOPOE_LANG">\r\n        <option value="Select:">Select:</option>\r\n        <option value="eng">English</option>\r\n        <option value="fre">French</option>\r\n        <option value="ger">German</option>\r\n        <option value="dut">Dutch</option>\r\n        <option value="ita">Italian</option>\r\n        <option value="spa">Spanish</option>\r\n        <option value="por">Portuguese</option>\r\n        <option value="gre">Greek</option>\r\n        <option value="slo">Slovak</option>\r\n        <option value="cze">Czech</option>\r\n        <option value="hun">Hungarian</option>\r\n        <option value="pol">Polish</option>\r\n        <option value="nor">Norwegian</option>\r\n        <option value="swe">Swedish</option>\r\n        <option value="fin">Finnish</option>\r\n        <option value="rus">Russian</option>\r\n</SELECT>'
+        fidesc = u'<SELECT name="DEMOPOE_LANG">\r\n        ' + \
+            '<option value="Select:">Select:</option>\r\n        ' + \
+            '<option value="eng">English</option>\r\n        ' + \
+            '<option value="fre">French</option>\r\n        ' + \
+            '<option value="ger">German</option>\r\n        ' + \
+            '<option value="dut">Dutch</option>\r\n        ' + \
+            '<option value="ita">Italian</option>\r\n        ' + \
+            '<option value="spa">Spanish</option>\r\n        ' + \
+            '<option value="por">Portuguese</option>\r\n        ' + \
+            '<option value="gre">Greek</option>\r\n        ' + \
+            '<option value="slo">Slovak</option>\r\n        ' + \
+            '<option value="cze">Czech</option>\r\n        ' + \
+            '<option value="hun">Hungarian</option>\r\n        ' + \
+            '<option value="pol">Polish</option>\r\n        ' + \
+            '<option value="nor">Norwegian</option>\r\n        ' + \
+            '<option value="swe">Swedish</option>\r\n        ' + \
+            '<option value="fin">Finnish</option>\r\n        ' + \
+            '<option value="rus">Russian</option>\r\n</SELECT>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2675,7 +3072,16 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 5)
-        fidesc = u'<select name="DEMOTHE_CHANGE[]" size="9" multiple>\r\n <option value="Select:">Select:</option>\r\n <option value="DEMOTHE_REP">Other Report Numbers</option>\r\n <option value="DEMOTHE_TITLE">Title</option>\r\n <option value="DEMOTHE_SUBTITLE">Subtitle</option>\r\n <option value="DEMOTHE_AU">Author(s)</option>\r\n <option value="DEMOTHE_SUPERV">Supervisor(s)</option>\r\n <option value="DEMOTHE_ABS">Abstract</option>\r\n <option value="DEMOTHE_NUMP">Number of Pages</option>\r\n <option value="DEMOTHE_LANG">Language</option>\r\n</select>'
+        fidesc = u'<select name="DEMOTHE_CHANGE[]" size="9" multiple>\r\n ' + \
+            '<option value="Select:">Select:</option>\r\n ' + \
+            '<option value="DEMOTHE_REP">Other Report Numbers</option>\r\n ' + \
+            '<option value="DEMOTHE_TITLE">Title</option>\r\n ' + \
+            '<option value="DEMOTHE_SUBTITLE">Subtitle</option>\r\n ' + \
+            '<option value="DEMOTHE_AU">Author(s)</option>\r\n ' + \
+            '<option value="DEMOTHE_SUPERV">Supervisor(s)</option>\r\n ' + \
+            '<option value="DEMOTHE_ABS">Abstract</option>\r\n ' + \
+            '<option value="DEMOTHE_NUMP">Number of Pages</option>\r\n ' + \
+            '<option value="DEMOTHE_LANG">Language</option>\r\n</select>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2692,7 +3098,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 5)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="Continue" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="Continue" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2726,7 +3134,11 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 2)
-        fidesc = u'<select name="DEMOTHE_DIPL">\r\n <option value="">Select:</option>\r\n <option value="Diploma">Diploma</option>\r\n <option value="MSc">MSc</option>\r\n <option value="PhD">PhD</option>\r\n</select>'
+        fidesc = u'<select name="DEMOTHE_DIPL">\r\n ' + \
+            '<option value="">Select:</option>\r\n ' + \
+            '<option value="Diploma">Diploma</option>\r\n ' + \
+            '<option value="MSc">MSc</option>\r\n ' + \
+            '<option value="PhD">PhD</option>\r\n</select>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2743,7 +3155,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 2)
-        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" class="adminbutton" name="endS" width="400" height="50" value="Finish Submission" onclick="finish();">\r\n</div>'
+        fidesc = u'<div align="center">\r\n<INPUT TYPE="button" ' + \
+            'class="adminbutton" name="endS" width="400" height="50" ' + \
+            'value="Finish Submission" onclick="finish();">\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2777,7 +3191,24 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2008, 3, 2)
-        fidesc = u'<SELECT name="DEMOTHE_LANG">\r\n        <option value="Select:">Select:</option>\r\n        <option value="eng">English</option>\r\n        <option value="fre">French</option>\r\n        <option value="ger">German</option>\r\n        <option value="dut">Dutch</option>\r\n        <option value="ita">Italian</option>\r\n        <option value="spa">Spanish</option>\r\n        <option value="por">Portuguese</option>\r\n        <option value="gre">Greek</option>\r\n        <option value="slo">Slovak</option>\r\n        <option value="cze">Czech</option>\r\n        <option value="hun">Hungarian</option>\r\n        <option value="pol">Polish</option>\r\n        <option value="nor">Norwegian</option>\r\n        <option value="swe">Swedish</option>\r\n        <option value="fin">Finnish</option>\r\n        <option value="rus">Russian</option>\r\n</SELECT>'
+        fidesc = u'<SELECT name="DEMOTHE_LANG">\r\n        ' + \
+            '<option value="Select:">Select:</option>\r\n        ' + \
+            '<option value="eng">English</option>\r\n        ' + \
+            '<option value="fre">French</option>\r\n        ' + \
+            '<option value="ger">German</option>\r\n        ' + \
+            '<option value="dut">Dutch</option>\r\n        ' + \
+            '<option value="ita">Italian</option>\r\n        ' + \
+            '<option value="spa">Spanish</option>\r\n        ' + \
+            '<option value="por">Portuguese</option>\r\n        ' + \
+            '<option value="gre">Greek</option>\r\n        ' + \
+            '<option value="slo">Slovak</option>\r\n        ' + \
+            '<option value="cze">Czech</option>\r\n        ' + \
+            '<option value="hun">Hungarian</option>\r\n        ' + \
+            '<option value="pol">Polish</option>\r\n        ' + \
+            '<option value="nor">Norwegian</option>\r\n        ' + \
+            '<option value="swe">Swedish</option>\r\n        ' + \
+            '<option value="fin">Finnish</option>\r\n        ' + \
+            '<option value="rus">Russian</option>\r\n</SELECT>'
         cookie = 0L
         maxlength = None
         size = None
@@ -2964,7 +3395,10 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2012, 2, 16)
-        fidesc = u'from invenio.modules.encoder.websubmit import websumbit_aspect_ratio_form_element\r\n\r\ntext = websumbit_aspect_ratio_form_element(curdir, doctype, uid, access)'
+        fidesc = u'from invenio.modules.encoder.websubmit import ' + \
+            'websumbit_aspect_ratio_form_element\r\n\r\ntext = ' + \
+            'websumbit_aspect_ratio_form_element(curdir, ' + \
+            'doctype, uid, access)'
         cookie = 0L
         maxlength = None
         size = None
@@ -3032,7 +3466,14 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2012, 2, 16)
-        fidesc = u'from invenio.modules.encoder.websubmit import (get_session_id, websubmit_singlepage)\r\n\r\n# Retrieve session id\r\ntry:\r\n    # User info is defined only in MBI/MPI actions...\r\n    session_id = get_session_id(None, uid, user_info) \r\nexcept:\r\n    session_id = get_session_id(req, uid, {})\r\n\r\ntext = websubmit_singlepage(curdir, doctype, uid, access, session_id)'
+        fidesc = u'from invenio.modules.encoder.websubmit import ' + \
+            '(get_session_id, websubmit_singlepage)\r\n\r\n' + \
+            '# Retrieve session id\r\ntry:\r\n    # User info is ' + \
+            'defined only in MBI/MPI actions...\r\n    session_id = ' + \
+            'get_session_id(None, uid, user_info) \r\nexcept:\r\n    ' + \
+            'session_id = get_session_id(req, uid, {})\r\n\r\ntext ' + \
+            '= websubmit_singlepage(curdir, doctype, uid, access, ' + \
+            'session_id)'
         cookie = 0L
         maxlength = None
         size = None
@@ -3049,7 +3490,9 @@ class SbmFIELDDESCData(DataSet):
         fddfi2 = None
         cols = None
         cd = datetime.date(2012, 2, 16)
-        fidesc = u'<div align="center">\r\n<input type="button" class="adminbutton" width="400" height="50" name="endS" value="finish submission" onclick="finish();" />\r\n</div>'
+        fidesc = u'<div align="center">\r\n<input type="button" ' + \
+            'class="adminbutton" width="400" height="50" name="endS" ' + \
+            'value="finish submission" onclick="finish();" />\r\n</div>'
         cookie = 0L
         maxlength = None
         size = None
@@ -3093,6 +3536,8 @@ class SbmFIELDDESCData(DataSet):
 
 
 class SbmFUNCTIONSData(DataSet):
+
+    """SbmFUNCTIONSData."""
 
     class SbmFUNCTIONS_APP_DEMOBOO_CaseEDS_40_1:
         action = u'APP'
@@ -4224,6 +4669,8 @@ class SbmFUNCTIONSData(DataSet):
 
 class SbmIMPLEMENTData(DataSet):
 
+    """SbmIMPLEMENTData."""
+
     class SbmIMPLEMENT_APPDEMOBOO_1:
         md = datetime.date(2002, 5, 28)
         stpage = 1L
@@ -4451,6 +4898,8 @@ class SbmIMPLEMENTData(DataSet):
 
 
 class SbmPARAMETERSData(DataSet):
+
+    """SbmPARAMETERSData."""
 
     class SbmPARAMETERS_DEMOART_addressesMBI:
         doctype = u'DEMOART'
@@ -4809,7 +5258,8 @@ class SbmPARAMETERSData(DataSet):
 
     class SbmPARAMETERS_DEMOJRN_pathsandsuffixes:
         doctype = u'DEMOJRN'
-        value = u'{\'image\':"image", \'file\':"file", \'flash\':"flash", \'media\':\'media\'}'
+        value = u'{\'image\':"image", \'file\':"file", ' + \
+            '\'flash\':"flash", \'media\':\'media\'}'
         name = u'paths_and_suffixes'
 
     class SbmPARAMETERS_DEMOJRN_recordsearchpattern:
