@@ -20,6 +20,32 @@
 """Access module configuration values."""
 
 from invenio.modules.access.local_config import VIEWRESTRCOLL
+from invenio.modules.accounts.models import Usergroup, UserUsergroup
+
+
+DEF_DEMO_USERS = (
+    ('jekyll', 'jekyll@cds.cern.ch', 'j123ekyll', '1'),
+    ('hyde', 'hyde@cds.cern.ch', 'h123yde', '1'),
+    ('dorian', 'dorian.gray@cds.cern.ch', 'd123orian', '1'),
+    ('romeo', 'romeo.montague@cds.cern.ch', 'r123omeo', '1'),
+    ('juliet', 'juliet.capulet@cds.cern.ch', 'j123uliet', '1'),
+    ('benvolio', 'benvolio.montague@cds.cern.ch', 'b123envolio', '1'),
+    ('balthasar', 'balthasar.montague@cds.cern.ch', 'b123althasar', '1')
+)
+
+DEF_DEMO_USERGROUPS = (
+    ('Theses viewers', 'Theses viewers internal group',
+     Usergroup.JOIN_POLICIES['VISIBLEOPEN']),
+    ('montague-family', 'The Montague family.',
+     Usergroup.JOIN_POLICIES['VISIBLEMAIL'])
+)
+
+DEF_DEMO_USERUSERGROUPS = (
+    ('jekyll', 'Theses viewers', UserUsergroup.USER_STATUS['MEMBER']),
+    ('romeo', 'montague-family', UserUsergroup.USER_STATUS['ADMIN']),
+    ('juliet', 'montague-family', UserUsergroup.USER_STATUS['MEMBER']),
+    ('benvolio', 'montague-family', UserUsergroup.USER_STATUS['MEMBER'])
+)
 
 # Demo site roles
 DEF_DEMO_ROLES = (
@@ -34,10 +60,10 @@ DEF_DEMO_ROLES = (
     ('swordcurator', 'BibSword client curator', 'deny any'),
     ('referee_DEMOBOO_*', 'Book collection curator', 'deny any'),
     ('restrictedpicturesviewer',
-    'Restricted pictures viewer', 'deny any'),
+     'Restricted pictures viewer', 'deny any'),
     ('curator', 'Curator', 'deny any'),
     ('basketusers', 'Users who can use baskets',
-    'deny email "hyde@cds.cern.ch"\nallow any'),
+     'deny email "hyde@cds.cern.ch"\nallow any'),
     ('claimpaperusers', 'Users who can perform changes to their own paper '
      'attributions without the need for an operator\'s approval',
      'deny email "hyde@cds.cern.ch"\nallow any'),
